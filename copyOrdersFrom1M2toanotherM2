@@ -1,0 +1,55 @@
+SET FOREIGN_KEY_CHECKS=0;
+#  Clean order history
+
+INSERT INTO database1.`sales_bestsellers_aggregated_daily` SELECT * FROM database2.sales_bestsellers_aggregated_daily;
+INSERT INTO database1.`sales_bestsellers_aggregated_monthly` SELECT * FROM database2.sales_bestsellers_aggregated_monthly;
+INSERT INTO database1.`sales_bestsellers_aggregated_yearly` SELECT * FROM database2.sales_bestsellers_aggregated_yearly;
+# Clean order infos
+
+INSERT INTO database1.`sales_creditmemo` SELECT * FROM database2.sales_creditmemo;
+INSERT INTO database1.`sales_creditmemo_comment` SELECT * FROM database2.sales_creditmemo_comment;
+INSERT INTO database1.`sales_creditmemo_grid` SELECT * FROM database2.sales_creditmemo_grid;
+INSERT INTO database1.`sales_creditmemo_item` SELECT * FROM database2.sales_creditmemo_item;
+INSERT INTO database1.`sales_invoice` SELECT * FROM database2.sales_invoice;
+INSERT INTO database1.`sales_invoiced_aggregated` SELECT * FROM database2.sales_invoiced_aggregated;
+INSERT INTO database1.`sales_invoiced_aggregated_order` SELECT * FROM database2.sales_invoiced_aggregated_order;
+INSERT INTO database1.`sales_invoice_comment` SELECT * FROM database2.sales_invoice_comment;
+INSERT INTO database1.`sales_invoice_grid` SELECT * FROM database2.sales_invoice_grid;
+INSERT INTO database1.`sales_invoice_item` SELECT * FROM database2.sales_invoice_item;
+INSERT INTO database1.`sales_order` SELECT * FROM database2.sales_order;
+INSERT INTO database1.`sales_order_address` SELECT * FROM database2.sales_order_address;
+INSERT INTO database1.`sales_order_aggregated_created` SELECT * FROM database2.sales_order_aggregated_created;
+INSERT INTO database1.`sales_order_aggregated_updated` SELECT * FROM database2.sales_order_aggregated_updated;
+INSERT INTO database1.`sales_order_grid` SELECT * FROM database2.sales_order_grid;
+INSERT INTO database1.`sales_order_item` SELECT * FROM database2.sales_order_item;
+INSERT INTO database1.`sales_order_payment` SELECT * FROM database2.sales_order_payment;
+INSERT INTO database1.`sales_order_status_history` SELECT * FROM database2.sales_order_status_history;
+INSERT INTO database1.`sales_order_tax` SELECT * FROM database2.sales_order_tax;
+INSERT INTO database1.`sales_order_tax_item` SELECT * FROM database2.sales_order_tax_item;
+INSERT INTO database1.`sales_payment_transaction` SELECT * FROM database2.sales_payment_transaction;
+INSERT INTO database1.`sales_refunded_aggregated` SELECT * FROM database2.sales_refunded_aggregated;
+INSERT INTO database1.`sales_refunded_aggregated_order` SELECT * FROM database2.sales_refunded_aggregated_order;
+INSERT INTO database1.`sales_shipment` SELECT * FROM database2.sales_shipment;
+INSERT INTO database1.`sales_shipment_comment` SELECT * FROM database2.sales_shipment_comment;
+INSERT INTO database1.`sales_shipment_grid` SELECT * FROM database2.sales_shipment_grid;
+INSERT INTO database1.`sales_shipment_item` SELECT * FROM database2.sales_shipment_item;
+INSERT INTO database1.`sales_shipment_track` SELECT * FROM database2.sales_shipment_track;
+INSERT INTO database1.`sales_shipping_aggregated` SELECT * FROM database2.sales_shipping_aggregated;
+INSERT INTO database1.`sales_shipping_aggregated_order` SELECT * FROM database2.sales_shipping_aggregated_order;
+# Clean cart infos
+INSERT INTO database1.`quote` SELECT * FROM database2.quote;
+INSERT INTO database1.`quote_address` SELECT * FROM database2.quote_address;
+INSERT INTO database1.`quote_address_item` SELECT * FROM database2.quote_address_item;
+INSERT INTO database1.`quote_id_mask` SELECT * FROM database2.quote_id_mask;
+INSERT INTO database1.`quote_item` SELECT * FROM database2.quote_item;
+INSERT INTO database1.`quote_item_option` SELECT * FROM database2.quote_item_option;
+INSERT INTO database1.`quote_payment` SELECT * FROM database2.quote_payment;
+INSERT INTO database1.`quote_shipping_rate` SELECT * FROM database2.quote_shipping_rate;
+# Reset indexes (if you want your orders number start back to 1
+INSERT INTO database1.sequence_invoice_1 SELECT * FROM database2.sequence_invoice_1;
+INSERT INTO database1.sequence_order_1 SELECT * FROM database2.sequence_order_1;
+INSERT INTO database1.sequence_shipment_1 SELECT * FROM database2.sequence_shipment_1;
+INSERT INTO database1.sequence_creditmemo_1 SELECT * FROM database2.sequence_creditmemo_1;
+
+
+SET FOREIGN_KEY_CHECKS=1;
